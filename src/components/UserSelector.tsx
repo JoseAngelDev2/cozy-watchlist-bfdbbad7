@@ -33,7 +33,7 @@ export function UserSelector({ selectedUser, onSelectUser }: UserSelectorProps) 
         )}
       >
         <span className="text-lg">👨</span>
-        <span>Rafa</span>
+        <span>Angel</span>
       </button>
     </div>
   );
