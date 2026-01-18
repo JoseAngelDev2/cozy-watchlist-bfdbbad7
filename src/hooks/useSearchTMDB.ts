@@ -4,13 +4,16 @@ import { toast } from "sonner";
 
 export interface TMDBSearchResult {
   id: number;
-  title: string;
-  original_title: string;
+  title?: string;
+  name?: string;
+  original_title?: string;
+  original_name?: string;
   overview: string;
   poster_path: string | null;
   backdrop_path: string | null;
   media_type: "movie" | "tv";
-  release_date: string;
+  release_date?: string;
+  first_air_date?: string;
   vote_average: number;
   popularity: number;
 }

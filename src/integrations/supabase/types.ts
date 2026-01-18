@@ -14,6 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
+      watchlist_individual: {
+        Row: {
+          created_at: string
+          estado: string
+          fecha_agregado: string
+          id: string
+          poster: string | null
+          tipo: string
+          titulo: string
+          tmdb_id: number
+          updated_at: string
+          usuario: string
+        }
+        Insert: {
+          created_at?: string
+          estado?: string
+          fecha_agregado?: string
+          id?: string
+          poster?: string | null
+          tipo: string
+          titulo: string
+          tmdb_id: number
+          updated_at?: string
+          usuario: string
+        }
+        Update: {
+          created_at?: string
+          estado?: string
+          fecha_agregado?: string
+          id?: string
+          poster?: string | null
+          tipo?: string
+          titulo?: string
+          tmdb_id?: number
+          updated_at?: string
+          usuario?: string
+        }
+        Relationships: []
+      }
       watchlist_juntos: {
         Row: {
           created_at: string
