@@ -5,6 +5,12 @@ import { useCallback } from "react";
 
 export type WatchlistStatus = "pendiente" | "viendo" | "completado";
 export type MediaType = "movie" | "tv";
+export type DbMediaType = "pelicula" | "serie";
+
+// Mapeo de tipo TMDB a tipo de base de datos
+const mapMediaType = (type: MediaType): DbMediaType => {
+  return type === "movie" ? "pelicula" : "serie";
+};
 
 export interface WatchlistItem {
   id: string;
@@ -48,7 +54,7 @@ export function useWatchlist() {
         .insert({
           tmdb_id: params.tmdb_id,
           titulo: params.titulo,
-          tipo: params.tipo,
+          tipo: mapMediaType(params.tipo),
           poster: params.poster,
           estado: "pendiente",
         })
