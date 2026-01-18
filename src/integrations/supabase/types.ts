@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      watchlist_juntos: {
+        Row: {
+          created_at: string
+          estado: string
+          fecha_agregado: string
+          id: string
+          poster: string | null
+          tipo: string
+          titulo: string
+          tmdb_id: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          estado?: string
+          fecha_agregado?: string
+          id?: string
+          poster?: string | null
+          tipo: string
+          titulo: string
+          tmdb_id: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          estado?: string
+          fecha_agregado?: string
+          id?: string
+          poster?: string | null
+          tipo?: string
+          titulo?: string
+          tmdb_id?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
