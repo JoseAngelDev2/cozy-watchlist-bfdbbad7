@@ -1,11 +1,11 @@
 import { HeroHeader } from "@/components/HeroHeader";
-import { MovieGrid } from "@/components/MovieGrid";
+import { WatchlistGrid } from "@/components/WatchlistGrid";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <HeroHeader />
-      <MovieGrid />
+      <WatchlistGrid />
       
       {/* Footer decoration */}
       <footer className="py-8 text-center">
