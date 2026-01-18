@@ -1,11 +1,13 @@
 import { IndividualHeroHeader } from "@/components/IndividualHeroHeader";
-import { IndividualGrid } from "@/components/IndividualGrid";
+import { IndividualWatchlistGrid } from "@/components/IndividualWatchlistGrid";
 
 const Individual = () => {
   return (
     <div className="min-h-screen bg-background">
       <IndividualHeroHeader />
-      <IndividualGrid />
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <IndividualWatchlistGrid />
+      </main>
       
       {/* Footer decoration */}
       <footer className="py-8 text-center">
