@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { Search, X, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -14,25 +14,24 @@ export function SearchBar({ onSearch, isSearching, onClear }: SearchBarProps) {
   const [query, setQuery] = useState("");
   const debounceRef = useRef<NodeJS.Timeout>();
 
-  useEffect(() => {
+  const handleChange = (value: string) => {
+    setQuery(value);
+    
     if (debounceRef.current) {
       clearTimeout(debounceRef.current);
     }
 
-    if (query.trim()) {
+    if (value.trim()) {
       debounceRef.current = setTimeout(() => {
-        onSearch(query);
+        onSearch(value);
       }, 400);
     }
-
-    return () => {
-      if (debounceRef.current) {
-        clearTimeout(debounceRef.current);
-      }
-    };
-  }, [query, onSearch]);
+  };
 
   const handleClear = () => {
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
     setQuery("");
     onClear();
   };
@@ -45,7 +44,7 @@ export function SearchBar({ onSearch, isSearching, onClear }: SearchBarProps) {
           type="text"
           placeholder="Buscar películas o series..."
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => handleChange(e.target.value)}
           className={cn(
             "pl-12 pr-12 py-6 text-base rounded-full",
             "bg-card border-2 border-border/50",

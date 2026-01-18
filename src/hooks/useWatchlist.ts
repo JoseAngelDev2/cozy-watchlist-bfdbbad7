@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useCallback } from "react";
 
 export type WatchlistStatus = "pendiente" | "viendo" | "completado";
 export type MediaType = "movie" | "tv";
@@ -108,9 +109,9 @@ export function useWatchlist() {
     },
   });
 
-  const isInWatchlist = (tmdbId: number) => {
+  const isInWatchlist = useCallback((tmdbId: number) => {
     return watchlist.some((item) => item.tmdb_id === tmdbId);
-  };
+  }, [watchlist]);
 
   return {
     watchlist,
