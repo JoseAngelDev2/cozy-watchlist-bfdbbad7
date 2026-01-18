@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
@@ -27,7 +27,7 @@ export function useSearchTMDB() {
   const [isSearching, setIsSearching] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
 
-  const search = async (query: string, type: "multi" | "movie" | "tv" = "multi") => {
+  const search = useCallback(async (query: string, type: "multi" | "movie" | "tv" = "multi") => {
     if (!query.trim()) {
       setResults([]);
       setHasSearched(false);
@@ -52,12 +52,12 @@ export function useSearchTMDB() {
     } finally {
       setIsSearching(false);
     }
-  };
+  }, []);
 
-  const clearResults = () => {
+  const clearResults = useCallback(() => {
     setResults([]);
     setHasSearched(false);
-  };
+  }, []);
 
   return {
     results,
